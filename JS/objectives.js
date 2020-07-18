@@ -51,3 +51,20 @@ Circle.call({}, 1)
 Circle.apply({}, [1,2,3])
 
 const another = new Circle(1);
+
+
+// values vs reference types
+let x = 10;
+let y = x;
+x = 20;
+// objects are stored differently in memory
+let t = { value: 10};
+let u = t;
+x.value = 20;
+// reference a object value
+let obj ={ value: 10};
+function increase(obj){
+  obj.value++
+}
+increase(obj);
+console.log(obj);
