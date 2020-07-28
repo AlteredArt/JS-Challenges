@@ -76,8 +76,20 @@ const allPositive = numArray.every(function(value){
   return value >=0;
 })
 console.log(allPositive, 'All Posotive')
-// filtering an array
+// filtering an array and mapping
 const numbersArray = [1,-1,2,-7,3];
-const filter = numbersArray.filter(v => v >= 0);
-console.log(filter, 'filtered')
-// mapping an array
+const items = numbersArray
+  .filter(v => v >= 0)
+  .map(n =>({value: n}))
+  .filter(obj => obj.value > 1)
+  .map(obj => obj.value)
+console.log(items, 'filtered and mapped')
+// reducing an array
+const cost = [1,4,5,6]
+let sum = 0;
+for (let n of cost)
+  sum += n;
+console.log(sum, 'sum')
+// reduce method
+const add = cost.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log(add, 'reduce')
