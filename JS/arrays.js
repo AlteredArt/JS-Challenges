@@ -44,3 +44,40 @@ console.log(combined)
 // slicing
 const slice = combined.slice(2,4)
 console.log(slice)
+// spread operator
+const fifth = [1,2,3]
+const sixth = [4,5,6]
+const join = [...fifth,['a','b'], ...sixth];
+console.log(join, 'join')
+const copy = [...join]
+// iterating an array
+const lists = [7,8,9,10]
+for(let list of lists)
+console.log(list)
+lists.forEach((list, index) => console.log(index, list, 'list'))
+// joining Array
+const make = [8,9,10,11];
+const made = make.join('!')
+console.log(made)
+const message = 'This is my first message';
+const parts = message.split('');
+console.log(parts, 'split')
+const combine = parts.join('-')
+console.log(combine, 'join')
+// sorting arrays
+const array = [4,3,2]
+array.sort();
+console.log(array, 'sort')
+array.reverse();
+console.log(array, 'reverse')
+// testing elements in an array you can also use some
+const numArray = [1,2,3]
+const allPositive = numArray.every(function(value){
+  return value >=0;
+})
+console.log(allPositive, 'All Posotive')
+// filtering an array
+const numbersArray = [1,-1,2,-7,3];
+const filter = numbersArray.filter(v => v >= 0);
+console.log(filter, 'filtered')
+// mapping an array
