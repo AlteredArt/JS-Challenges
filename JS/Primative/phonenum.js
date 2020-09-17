@@ -1,4 +1,2 @@
-
- function createPhoneNumber(numbers){
-    return `(${numbers.slice(0,3).join('')}) ${numbers.slice(3,6).join('')}-${numbers.slice(6).join('')}`;
-  }
+const createPhoneNumber = (str) => '(' + str.substr(0,3) + ') ' + str.substr(3,3) + '-' + str.substr(6,4);
+  console.log(createPhoneNumber('7772304563'))

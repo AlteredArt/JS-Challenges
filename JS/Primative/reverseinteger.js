@@ -1,4 +1,4 @@
- // reverse an integer
+// reverse an integer
  function reverseInt (n) {
     let reversed = n.toString().split('').reverse().join('')
     return parseInt(reversed)*Math.sign(n)

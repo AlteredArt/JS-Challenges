@@ -35,7 +35,6 @@ const sw = new Stopwatch()
 
 
 // move all functions to prototype
-
 function Stopwatch2(){
     let startTime, endTime, running, duration = 0;
 
@@ -81,4 +80,4 @@ Stopwatch.prototype.reset = function(){
     this.duration = 0;
 }
 
-const sw = new Stopwatch()
+const sw2 = new Stopwatch()

@@ -7,4 +7,4 @@ function showStars(rows){
       console.log(pattern)
     }
 }
-console.log("Show Stars", showStars(3));
+showStars(5)
