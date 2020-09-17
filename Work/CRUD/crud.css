@@ -1,0 +1,21 @@
+* {
+    align-items: center;
+    text-align: center;
+}
+body {
+    background-color: blue;
+
+}
+.card {
+    width: 18rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    color: blue;
+}
+
+/* .dog-form {
+    display: flex;
+    flex-direction: column;
+} */
+
