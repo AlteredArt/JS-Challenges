@@ -124,15 +124,17 @@ function gameObject() {
     return allPlayers;
     // return Object.assign({}, homePlayers, awayPlayers);
   }
-  console.log('gameObject', gameObject())
-  
+console.log('gameObject', gameObject())
+console.log(players())  
   function numPointsScored(playerName) {
-  return players()[playerName].points;
+    return players()[playerName].points;
   }
-  
+  console.log("points scored", numPointsScored('Brendan Haywood'))
+
   function shoeSize(playerName){
-  return players()[playerName].shoe;
+    return players()[playerName].shoe;
   }
+  console.log('shoe size', shoeSize('Brendan Haywood'))
   
   function getPlayer(playerName){
   return players()[playerName];

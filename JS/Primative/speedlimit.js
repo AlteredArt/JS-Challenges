@@ -17,6 +17,7 @@ function checkSpeed(speed){
       else
         console.log('Points', points)
     }
-  checkSpeed(80);
-  
+checkSpeed(60)
+checkSpeed(82)
+checkSpeed(142)
 
