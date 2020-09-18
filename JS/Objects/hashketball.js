@@ -116,49 +116,60 @@ function gameObject() {
     };
     return object;
   }
-  
+  console.log('gameObject:', gameObject())
+
   function players(){
     const homePlayers = gameObject()['home']['players'];
+    //same but diff syntax
     const awayPlayers = gameObject().away.players;
     const allPlayers = Object.assign(homePlayers, awayPlayers);
     return allPlayers;
     // return Object.assign({}, homePlayers, awayPlayers);
   }
-console.log('gameObject', gameObject())
-console.log(players())  
+console.log('players:', players())  
+
+
   function numPointsScored(playerName) {
     return players()[playerName].points;
   }
-  console.log("points scored", numPointsScored('Brendan Haywood'))
+  console.log("points scored:", numPointsScored('Brendan Haywood'))
+
 
   function shoeSize(playerName){
     return players()[playerName].shoe;
   }
-  console.log('shoe size', shoeSize('Brendan Haywood'))
+  console.log('shoe size:', shoeSize('Brendan Haywood'))
   
+
   function getPlayer(playerName){
-  return players()[playerName];
+    return players()[playerName];
   }
+  console.log('get player:', getPlayer('Brendan Haywood'))
   
   function getPlayerNumber(playerName){
-  return players()[playerName]["number"];
+    return players()[playerName]["number"];
   }
+  console.log('player number:', getPlayerNumber('Brendan Haywood'))
+
   function teamColors(teamName) {
   if(gameObject().home.teamName === teamName){
     return gameObject().home.colors;
   }
   else if (gameObject().away.teamName === teamName){
     return gameObject().away.colors;
-  }else return [];
+  }else return "not a team";
   }
+  console.log('team colors:', teamColors('Brooklyn Nets'))
   
   function getTeamNames(){
-  const homeName = gameObject()['home']['teamName'];
-  const awayName = gameObject()['away']['teamName'];
-  return Object.assign(homeName, awayName);
-  // const bothTeams = Object.assign(homeName, awayName);
-  // return bothTeams;
+    const homeName = gameObject()['home']['teamName'];
+    const awayName = gameObject()['away']['teamName'];
+    return Object.assign(homeName, awayName);
+    // // const bothTeams = Object.assign(homeName, awayName);
+    // return bothTeams;
   }
+  console.log('team name:', getTeamNames())
+
   
   function getTeamByName(teamName){
   return gameObject().home.teamName === teamName

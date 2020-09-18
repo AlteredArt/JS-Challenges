@@ -15,7 +15,7 @@ function isPrime (num) {
 }
 // prime numbers
 // 0=n 1=n 2=y 3=y 4=n 5=y
-console.log("Prime Number ifloop", isPrime(5))
+console.log("Prime Number ifloop", isPrime(3))
 
 
 // prime numbers
@@ -27,5 +27,5 @@ function primeNum(){
     }
 }
 
-
+console.log(primeNum())
 
