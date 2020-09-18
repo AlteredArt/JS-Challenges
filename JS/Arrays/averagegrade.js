@@ -1,5 +1,5 @@
 // Calculate the Average Grade
-const marks = [80, 80, 90]
+const marks = [80, 77, 80]
 function calculateGrade(marks) {
   const average = calculateAverage(marks);
   if (average < 60) return "F";

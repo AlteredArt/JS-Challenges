@@ -10,6 +10,7 @@ let address = {
     console.log(key, address[key])
   }
   showAddress(address)
+  
   // factory function
   function createAddress(street, city, zipCode) {
     return {
@@ -18,26 +19,34 @@ let address = {
       zipCode
     }
   }
-  let address1 = createAddress('a', 'b', 'c')
+  let address1 = createAddress('homes st.', 'taylor', '80214')
   console.log(address1)
+
+
   // constructor function
   function MakeAddress(street, city, zipCode){
     this.street = street;
     this.cty = city;
     this.zipCode = zipCode;
   }
-  let address3 = new MakeAddress('a', 'b', 'c')
+  let address3 = new MakeAddress('burling st.', 'austin', '79987')
   console.log(address3)
   // Object equality
-  let address4 = new MakeAddress('a','b','c')
+  let address4 = new MakeAddress('burling st.', 'austin', '79987')
+  console.log(address4)
+
+
+  function areEqual(add1, add2){
+    return add1.street  === add2.street &&
+    add1.city === add2.city &&
+    add1.zipCode === add2.zipCode;
+  }
+  let equal = areEqual(address3, address4)
+  console.log(equal)
   
-  function areEqual(address3, address4){
-    return address3.street  === address4.street &&
-    address3.city === address4.city &&
-    address4.zipCode === address4.zipCode;
+  function areSame(add1, add2){
+    return add1 === add2;
   }
   
-  function areSame(address3, address4){
-    return address3 === address4;
-  }
+  console.log(areSame(address3, address4))
   
