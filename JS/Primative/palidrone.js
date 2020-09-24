@@ -1,18 +1,18 @@
-// palidrone with lower case 
-function palidrone (str) {
+// palindrome with lower case 
+function palindrome(str) {
     let strL = str.toLowerCase()
     let reversed = strL.split('').reverse().join('')
     return strL === reversed;
 }
-console.log(palidrone('racecar'))
-console.log(palidrone('Waffles'))
-console.log(palidrone('Racecar'))
+console.log(palindrome('racecar'))
+console.log(palindrome('Waffles'))
+console.log(palindrome('Racecar'))
 
-// palidrome second solution using every and lower case
-function palindrome2(str){
+// palindrome second solution using every and lower case
+function palindrome2(str) {
     let lower = str.toLowerCase();
     return lower.split('').every((char, i) => {
-        return char === lower[str.length -i -1];
+        return char === lower[str.length - i - 1];
     });
 }
 console.log('.every', palindrome2('racecar'))
