@@ -55,7 +55,7 @@ class Tree {
             const node = arr.shift();
             //Now take that Nodes Children and add it on to front of the Array
             //ES6 Spread really saves us some lines of code, instead of a For Loop
-            arr.unshift(...arr.children);
+            arr.unshift(...node.children);
             //Remember to add our call back function with Node
             fn(node);
         }
