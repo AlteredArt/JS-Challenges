@@ -1,114 +1,195 @@
-console.log('linkedlist')
+console.log('linked list')
 
 class Node {
-    constructor(value){
-        this.value = value,
-        this.next = null,
-        //double
-        this.prev = null
-        //
+    constructor(data, next = null) {
+        this.data = data;
+        this.next = next;
     }
 }
 
-class DoubleLinkedList {
-    constructor(value) {
-        this.head = {
-            value: value,
-            next: null,
-            prev: null
-        }
-        this.tail = this.head;
-        this.length = 1
+class LinkedList {
+    constructor() {
+        this.head = null;
     }
 
-    append(value) {
-        const newNode = new Node(value)
-        newNode.prev = this.tail
-        //double
-        this.tail.next = newNode;
-        //
-        this.tail = newNode;
-        this.length++;
-        return this;
+    insertFirst(data) {
+        // this.head = new Node(data, this.head);
+        this.getAt(data, 0)
     }
 
-    prepend(value) {
-        const newNode = new Node(value)
-        newNode.next = this.head;
-        //double
-        this.head.prev = newNode;
-        //
-        this.head = newNode;
-        this.length++;
-        return this
-    }
-    printList() {
-        const array = [];
-        let currentNode = this.head;
-        while(currentNode !== null){
-            array.push(currentNode.value);
-            currentNode = currentNode.next
-        }
-        return array
-    }
-
-    insert(index, value) {
-        if (index >= this.length) {
-            return this.append(value);
-        }
-        const newNode = new Node(value)
-        const leader = this.traverseToIndex(index -1)
-        //double
-        const follower = leader.next;
-        //
-        leader.next = newNode;
-        //double
-        newNode.prev = leader;
-        //
-        newNode.next = follower;
-        follower.prev = newNode;
-        this.length++;
-        return this.printList()
-    }
-    traverseToIndex(index) {
+    size() {
         let counter = 0;
-        let currentNode = this.head;
-        while(counter !==index){
-            currentNode = currentNode.next;
-            counter++
+        let node = this.head;
+        while (node) {
+            counter++;
+            node = node.next;
         }
-        return currentNode;
+        return counter;
     }
 
-    remove(index){
-        const leader = this.traverseToIndex(index-1);
-        const unwantedNode = leader.next;
-        leader.next = unwantedNode.next;
-        this.length--;
-        return this.printList()
+    getFirst() {
+        // return this.head;
+        return this.getAt(0);
     }
 
-    reverse() {
+    getLast() {
+        // if (!this.head) {
+        //     return null;
+        // }
+        // let node = this.head;
+        // while (node) {
+        //     if (!node.next) {
+        //         return node;
+        //     }
+        //     node = node.next
+        // }
+        return this.getAt(this.size() - 1);
+    }
+
+    clear() {
+        this.head = null;
+    }
+
+    removeFirst() {
+        if (!this.head) {
+            return
+        }
+        this.head = this.head.next;
+    }
+
+    removeLast() {
+        if (!this.head) {
+            return;
+        }
         if (!this.head.next) {
-            return this.head;
+            this.head = null;
+            return;
         }
-        let first = this.head;
-        this.tail = this.head;
-        let second = first.next;
-        while(second){
-            const temp = second.next;
-            second.next = first;
-            first = second;
-            second = temp;
+        let previous = this.head;
+        let node = this.head.next;
+        while (node.next) {
+            previous = node;
+            node = node.next;
         }
-        this.head.next = null;
-        this.head = first;
-        return this
+        previous.next = null;
+    }
+
+    insertLast(data) {
+        const last = this.getLast();
+        if (last) {
+            last.next = new Node(data);
+        } else {
+            this.head = new Node(data);
+        }
+    }
+
+    getAt(index) {
+        let counter = 0;
+        let node = this.head;
+        while (node) {
+            if (counter === index) {
+                return node;
+            }
+            counter++;
+            node = node.next;
+        }
+        return null;
+    }
+
+    removeAt(index) {
+        if (!this.head) {
+            return;
+        }
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+        const previous = this.getAt(index - 1);
+        if (!previous || !previous.next) {
+            return;
+        }
+        previous.next = previous.next.next;
+    }
+
+    insertAt(data, index) {
+        if (!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+        if (index === 0) {
+            this.head = new Node(data, this.head);
+            return;
+        }
+        const previous = this.getAt(index - 1) || this.getLast();
+        const node = new Node(data, previous.next);
+        previous.next = node;
+    }
+    //extras
+    // foreach
+    forEach(fn) {
+        let node = this.head;
+        let counter = 0;
+        while (node) {
+            fn(node, counter);
+            node = node.next;
+            counter++;
+        }
+    }
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while (node) {
+            yield node;
+            node = node.next;
+        }
+    }
+    //find midpoint
+    midpoint(list) {
+        let slow = list.getFirst();
+        let fast = list.getFirst();
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+        return slow;
+    }
+
+    //circular or double linked lists
+    circular(list) {
+        let slow = list.getFirst();
+        let fast = list.getFirst();
+
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow === fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //from last
+    fromLast(list, n) {
+        let slow = list.getFirst();
+        let fast = list.getFirst();
+
+        while (n > 0) {
+            fast = fast.next;
+            n--;
+        }
+
+        while (fast.next) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
     }
 }
 
 
-const myLikedList = new DoubleLinkedList(10);
+const myLikedList = new LinkedList(10);
 myLikedList.append(5)
 myLikedList.append(16)
 myLikedList.prepend(1)
