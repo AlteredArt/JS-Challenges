@@ -28,3 +28,40 @@ for (let i = 0; i < array.length; i++) {
 
 console.log(min)
 console.log(max)
+
+
+//extra
+function minMax(arr) {
+    arr.sort(function (a, b) { return a - b });
+    return [arr[0], arr[arr.length - 1]];
+
+}
+
+//2
+function minMax(arr) {
+    arr = arr.sort(function (a, b) {
+        return a - b
+    })
+    return [arr[0], arr[arr.length - 1]]
+}
+
+//3
+function minMax(arr) {
+    var returnArr = [];
+    var min = arr[0];
+    var max = arr[0];
+
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    returnArr.push(min);
+    returnArr.push(max);
+
+    return returnArr;
+}
