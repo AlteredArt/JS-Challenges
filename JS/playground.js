@@ -4,7 +4,7 @@ console.log('playground')
 // console.log(array.sort(function (a, b) { return a.length - b.length }))
 
 function sortByLength(arr) {
-    return arr.sort((a, b) => a.length - b.length)
+    console.log(arr.sort((a, b) => a.length - b.length))
 }
 
 
