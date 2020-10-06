@@ -36,27 +36,22 @@ function selectionSort(arr) {
     }
     return arr;
 }
-//needs work
+
 //insertion sort can sometimes be O(N)
 //starts with comparing the first 2 indexes, then takes the next index and compares it to those two
 function insertionSort(array) {
     const length = array.length;
-    for (let i = 0; i < length; i++) {
-        if (array[i] < array[0]) {
-            //move number to the first position
-            array.unshift(array.splice(i, 1)[0]);
-        } else {
-            //find where number should go
-            for (let j = 1; j < i; j++) {
-                if (array[i] > array[j - 1] && array[i] < array[j]) {
-                    //move number to the right spot
-                    array.splice(j, 0, array.splice(i, 1)[0]);
-                }
+    for (let i = 1; i < length; i++) {
+        for (j = 0; j < i; j++) {
+            if (array[i] < array[j]) {
+                var temp = array.splice(i, 1);
+                array.splice(j, 0, temp[0])
             }
         }
     }
+    return array
 }
-//needs work
+
 console.log(insertionSort([4, 6, 12, 34, 25, 3, 2]))
 
 
@@ -85,6 +80,7 @@ function merge(left, right) {
     }
     return [...results, ...left, ...right];
 }
+console.log(mergeSort([2, 56, 43, 25, 12, 3, 4]))
 
-
-//quick sort
+//quick sort best case O(N log N) worst case O(N^2) space O(log N)
+//picks a pivot point and compares the indexes around it
