@@ -84,3 +84,77 @@ console.log(mergeSort([2, 56, 43, 25, 12, 3, 4]))
 
 //quick sort best case O(N log N) worst case O(N^2) space O(log N)
 //picks a pivot point and compares the indexes around it
+const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+function quickSort(array, left, right) {
+    const len = array.length;
+    let pivot;
+    let partitionIndex;
+
+    if (left < right) {
+        pivot = right;
+        partitionIndex = partition(array, pivot, left, right);
+
+        //sort left and right
+        quickSort(array, left, partitionIndex - 1);
+        quickSort(array, partitionIndex + 1, right);
+    }
+    return array;
+}
+
+function partition(array, pivot, left, right) {
+    let pivotValue = array[pivot];
+    let partitionIndex = left;
+
+    for (let i = left; i < right; i++) {
+        if (array[i] < pivotValue) {
+            swap(array, i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    swap(array, right, partitionIndex);
+    return partitionIndex;
+}
+
+function swap(array, firstIndex, secondIndex) {
+    var temp = array[firstIndex];
+    array[firstIndex] = array[secondIndex];
+    array[secondIndex] = temp;
+}
+
+//Select first and last index as 2nd and 3rd parameters
+quickSort(numbers, 0, numbers.length - 1);
+console.log(numbers);
+
+
+// heap sort in python
+// def max_heapify(A, heap_size, i):
+// left = 2 * i + 1
+// right = 2 * i + 2
+// largest = i
+// if left < heap_size and A[left] > A[largest]:
+// largest = left
+// if right < heap_size and A[right] > A[largest]:
+// largest = right
+// if largest != i:
+//     A[i], A[largest] = A[largest], A[i]
+// max_heapify(A, heap_size, largest)
+
+// def build_heap(A):
+// heap_size = len(A)
+// for i in range((heap_size / 2), -1, -1):
+//     max_heapify(A, heap_size, i)
+
+// def heapsort(A):
+// heap_size = len(A)
+// build_heap(A)
+//     // #print A #uncomment this print to see the heap it builds
+// for i in range(heap_size - 1, 0, -1):
+//     A[0], A[i] = A[i], A[0]
+// heap_size -= 1
+// max_heapify(A, heap_size, 0)
+
+// A = [2, 8, 1, 4, 14, 7, 16, 10, 9, 3]
+// console.log(heapsort(A))
+
+
