@@ -45,4 +45,4 @@ let eSet = new Set(array)
 console.log(eSet)
 //brings back an object
 //to array
-console.log([... new Set(array)]);
+console.log('set', [... new Set(array)]);
